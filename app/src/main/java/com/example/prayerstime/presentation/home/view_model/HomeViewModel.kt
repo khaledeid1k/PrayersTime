@@ -28,7 +28,6 @@ class HomeViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-
             getAllTimesPrayUseCase(30.8024, 26.8206, 4)
                 ?.apply {
                     val nextPray = getNextPray(this.prayItems, this.date)

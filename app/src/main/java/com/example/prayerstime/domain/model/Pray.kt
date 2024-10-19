@@ -15,5 +15,4 @@ data class Pray(
 data class PrayInfo(
     val prayName : String,
     val prayTime : String,
-    val prayTimeAmOrPm : String,
 )

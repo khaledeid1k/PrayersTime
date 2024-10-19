@@ -1,9 +1,7 @@
-package com.example.prayerstime
+package com.example.prayerstime.core
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class PrayApplication: Application() {
-
-}
+class PrayApplication: Application()

@@ -2,8 +2,6 @@ package com.example.prayerstime.presentation.home.ui
 
 import android.os.Build
 import androidx.annotation.RequiresApi
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -53,7 +51,7 @@ fun HomeContent(homeState: Pray, homeEvents: HomeEvents) {
                 HorizontalDivider(Modifier.padding(8.dp), thickness = 2.dp, color = Color.Black)
                 LazyColumn {
                     items(homeState.prayItems){
-                        PrayItem(prayName = it.prayName, prayTime = it.prayTime, prayTimeAmOrPm = it.prayTimeAmOrPm)
+                        PrayItem(prayName = it.prayName, prayTime = it.prayTime)
                     }
                 }
                 HorizontalDivider(

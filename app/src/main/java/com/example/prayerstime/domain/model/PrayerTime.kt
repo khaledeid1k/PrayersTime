@@ -1,12 +1,12 @@
 package com.example.prayerstime.domain.model
 
-sealed class PrayerTime(val prayName: String, val prayTimeAmOrPm: String) {
-    object Fajr : PrayerTime("Fajr", "Am")
-    object Sunrise : PrayerTime("Sunrise", "Am")
-    object Dhuhr : PrayerTime("Dhuhr", "Pm")
-    object Asr : PrayerTime("Asr", "Pm")
-    object Maghrib : PrayerTime("Maghrib", "Pm")
-    object Isha : PrayerTime("Isha", "Pm")
+sealed class PrayerTime(val prayName: String) {
+    object Fajr : PrayerTime("Fajr")
+    object Sunrise : PrayerTime("Sunrise")
+    object Dhuhr : PrayerTime("Dhuhr")
+    object Asr : PrayerTime("Asr")
+    object Maghrib : PrayerTime("Maghrib")
+    object Isha : PrayerTime("Isha")
 
 
 }

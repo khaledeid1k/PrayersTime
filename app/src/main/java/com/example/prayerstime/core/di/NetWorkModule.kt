@@ -1,6 +1,5 @@
-package com.example.prayerstime.di
+package com.example.prayerstime.core.di
 
-import com.airbnb.lottie.BuildConfig
 import com.example.prayerstime.data.remote.ApiService
 import dagger.Module
 import dagger.Provides

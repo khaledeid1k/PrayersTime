@@ -17,32 +17,26 @@ fun PrayResponseDTO.toPray(): Pray {
             PrayInfo(
                 prayName = PrayerTime.Fajr.prayName,
                 prayTime = timings.fajr,
-                prayTimeAmOrPm = PrayerTime.Fajr.prayTimeAmOrPm
             ),
             PrayInfo(
                 prayName = PrayerTime.Sunrise.prayName,
                 prayTime = timings.sunrise,
-                prayTimeAmOrPm = PrayerTime.Sunrise.prayTimeAmOrPm
             ),
             PrayInfo(
                 prayName = PrayerTime.Dhuhr.prayName,
                 prayTime = timings.dhuhr,
-                prayTimeAmOrPm = PrayerTime.Dhuhr.prayTimeAmOrPm
             ),
             PrayInfo(
                 prayName = PrayerTime.Asr.prayName,
                 prayTime = timings.asr,
-                prayTimeAmOrPm = PrayerTime.Asr.prayTimeAmOrPm
             ),
             PrayInfo(
                 prayName = PrayerTime.Maghrib.prayName,
                 prayTime = timings.maghrib,
-                prayTimeAmOrPm = PrayerTime.Maghrib.prayTimeAmOrPm
             ),
             PrayInfo(
                 prayName = PrayerTime.Isha.prayName,
                 prayTime = timings.isha,
-                prayTimeAmOrPm = PrayerTime.Isha.prayTimeAmOrPm
             ),
 
 
@@ -75,32 +69,26 @@ fun PrayEntity.toPray(): Pray{
             PrayInfo(
                 prayName = PrayerTime.Fajr.prayName,
                 prayTime = fajrTime?:"",
-                prayTimeAmOrPm = PrayerTime.Fajr.prayTimeAmOrPm
             ),
             PrayInfo(
                 prayName = PrayerTime.Sunrise.prayName,
                 prayTime = sunriseTime?:"",
-                prayTimeAmOrPm = PrayerTime.Sunrise.prayTimeAmOrPm
             ),
             PrayInfo(
                 prayName = PrayerTime.Dhuhr.prayName,
                 prayTime = dhuhrTime?:"",
-                prayTimeAmOrPm = PrayerTime.Dhuhr.prayTimeAmOrPm
             ),
             PrayInfo(
                 prayName = PrayerTime.Asr.prayName,
                 prayTime = asrTime?:"",
-                prayTimeAmOrPm = PrayerTime.Asr.prayTimeAmOrPm
             ),
             PrayInfo(
                 prayName = PrayerTime.Maghrib.prayName,
                 prayTime = maghribTime?:"",
-                prayTimeAmOrPm = PrayerTime.Maghrib.prayTimeAmOrPm
             ),
             PrayInfo(
                 prayName = PrayerTime.Isha.prayName,
                 prayTime = ishaTime?:"",
-                prayTimeAmOrPm = PrayerTime.Isha.prayTimeAmOrPm
             ),
 
         ) ,

@@ -1,4 +1,4 @@
-package com.example.prayerstime.di
+package com.example.prayerstime.core.di
 
 import com.example.prayerstime.data.local.PrayResponseDao
 import com.example.prayerstime.data.remote.ApiService

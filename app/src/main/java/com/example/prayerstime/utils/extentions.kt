@@ -31,3 +31,11 @@ fun convertSecondsToHoursAndMinutes(seconds: Long): Pair<Int, Int> {
     val minutes = ((seconds % 3600) / 60).toInt()
     return Pair(hours, minutes)
 }
+fun String.convertTo12HourFormat(): String {
+    val inputFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
+    val outputFormat = SimpleDateFormat("hh:mm a", Locale.getDefault())
+
+    val date = inputFormat.parse(this)
+
+    return outputFormat.format(date!!)
+}

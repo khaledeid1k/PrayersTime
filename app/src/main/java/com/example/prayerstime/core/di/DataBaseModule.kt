@@ -1,4 +1,4 @@
-package com.example.prayerstime.di
+package com.example.prayerstime.core.di
 
 import android.content.Context
 import androidx.room.Room
