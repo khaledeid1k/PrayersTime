@@ -1,4 +1,4 @@
-package com.example.prayerstime.ui.theme
+package com.example.prayerstime.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 
