@@ -12,7 +12,7 @@ import com.example.prayerstime.core.nav.args.HomeArgs.Companion.HOME_SCREEN_METH
 import com.example.prayerstime.presentation.home.ui.HomeScreen
 import com.example.prayerstime.presentation.setting.ui.SettingScreen
 
-@RequiresApi(Build.VERSION_CODES.TIRAMISU)
+@RequiresApi(Build.VERSION_CODES.O)
 fun NavGraphBuilder.createHomeNavGraph(
     navController: NavController
 ) {

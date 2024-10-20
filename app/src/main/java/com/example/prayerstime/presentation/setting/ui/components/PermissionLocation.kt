@@ -8,9 +8,7 @@ import android.location.Address
 import android.location.Geocoder
 import android.location.Location
 import android.net.Uri
-import android.os.Build
 import android.provider.Settings
-import androidx.annotation.RequiresApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -41,7 +39,6 @@ import com.google.accompanist.permissions.shouldShowRationale
 import com.google.android.gms.location.LocationServices
 import java.util.Locale
 
-@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
 fun PermissionLocation(permeationGranted:(Boolean,Double,Double)->Unit) {

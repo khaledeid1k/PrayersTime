@@ -1,8 +1,6 @@
 package com.example.prayerstime.presentation.setting.ui
 
-import android.os.Build
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -34,7 +32,6 @@ import com.example.prayerstime.presentation.setting.ui.components.MenuSample
 import com.example.prayerstime.presentation.setting.ui.components.PermissionLocation
 import com.example.prayerstime.presentation.setting.view_model.SettingViewModel
 
-@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 @Composable
 fun SettingScreen(navController: NavController) {
     val settingViewModel = hiltViewModel<SettingViewModel>()
@@ -43,7 +40,6 @@ fun SettingScreen(navController: NavController) {
     SettingContent(settingEvent = settingViewModel, settingState = settingState, navController)
 }
 
-@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 @Composable
 fun SettingContent(settingEvent: SettingEvent, settingState: Setting, navController: NavController) {
     val context = LocalContext.current
@@ -103,7 +99,6 @@ fun SettingContent(settingEvent: SettingEvent, settingState: Setting, navControl
     }
 }
 
-@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 @Composable
 @Preview(showBackground = true)
 fun SettingPreview(modifier: Modifier = Modifier) {
