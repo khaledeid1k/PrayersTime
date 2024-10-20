@@ -1,12 +1,15 @@
 package com.example.prayerstime.utils
 
 import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
 
-fun dateDay()= SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(Date())
+fun dateDay(): String = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(Date())
+fun getSelectedDate(count: Long): String = LocalDate.now().plusDays(count).format( DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.getDefault()))
 
 fun getDateComponents(dateString: String): Triple<Int, Int, Int> {
     val dateFormat = SimpleDateFormat("dd MMM yyyy", Locale.ENGLISH)

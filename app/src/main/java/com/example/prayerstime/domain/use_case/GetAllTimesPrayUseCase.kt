@@ -15,9 +15,10 @@ class GetAllTimesPrayUseCase @Inject constructor(
     suspend operator fun invoke(
         latitude: Double,
         longitude: Double,
-        method: Int
+        method: Int,
+        date: String = dateDay(),
     ): Pray? {
-        return repository.getAllTimesPray(dateDay(), latitude, longitude, method)
+        return repository.getAllTimesPray(date, latitude, longitude, method)
 
     }
 }

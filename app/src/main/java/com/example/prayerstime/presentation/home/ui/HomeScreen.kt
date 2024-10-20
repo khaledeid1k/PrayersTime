@@ -16,6 +16,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -48,13 +49,14 @@ fun HomeScreen() {
 fun HomeContent(homeState: Pray, homeEvents: HomeEvents) {
     var remainTimeMinute by remember { mutableIntStateOf(homeState.remainTimeMinute) }
     var remainTimeHour by remember { mutableIntStateOf(homeState.remainTimeHour) }
+    var count by remember { mutableStateOf(0L) }
     LaunchedEffect(homeState.remainTimeMinute, homeState.remainTimeHour) {
         remainTimeMinute = homeState.remainTimeMinute
         remainTimeHour = homeState.remainTimeHour
     }
     LaunchedEffect(Unit) {
         while (true) {
-            if(remainTimeMinute==0&&remainTimeHour==0){
+            if (remainTimeMinute == 0 && remainTimeHour == 0) {
                 homeEvents.updateLeftTime()
             }
             delay(1.minutes)
@@ -64,45 +66,55 @@ fun HomeContent(homeState: Pray, homeEvents: HomeEvents) {
                 remainTimeHour--
                 remainTimeMinute = 59
             }
-            if(remainTimeMinute==0&&remainTimeHour==0){
+            if (remainTimeMinute == 0 && remainTimeHour == 0) {
                 homeEvents.updateLeftTime()
             }
         }
 
     }
     Scaffold { padding ->
-            Column (
-                Modifier
-                    .padding(padding)
-                    .fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                ) {
-                HomeHeader(date = homeState.date, location =homeState.location,
-                    nextPray ={homeEvents.nextPray()} , previousPray ={ homeEvents.previousPray()} )
-                HorizontalDivider(Modifier.padding(8.dp), thickness = 2.dp, color = Color.Black)
-                HeaderBody(nextPray =homeState.nextPray ,
-                    remainTimeHour =remainTimeHour ,
-                    remainTimeMinute =remainTimeMinute
-                )
-                HorizontalDivider(Modifier.padding(8.dp), thickness = 2.dp, color = Color.Black)
-                LazyColumn {
-                    items(homeState.prayItems){
-                        PrayItem(prayName = it.prayName, prayTime = it.prayTime)
+        Column(
+            Modifier
+                .padding(padding)
+                .fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            HomeHeader(date = homeState.date, location = homeState.location,
+                nextPray = {
+                    if (count < 7) {
+                        count++
                     }
+                    homeEvents.getSelectedPrayersDate(count)
+                }, previousPray = {
+                    if (count > 0) {
+                        count--
+                    }
+                    homeEvents.getSelectedPrayersDate(count)
+                })
+            HorizontalDivider(Modifier.padding(8.dp), thickness = 2.dp, color = Color.Black)
+            HeaderBody(
+                nextPray = homeState.nextPray,
+                remainTimeHour = remainTimeHour,
+                remainTimeMinute = remainTimeMinute
+            )
+            HorizontalDivider(Modifier.padding(8.dp), thickness = 2.dp, color = Color.Black)
+            LazyColumn {
+                items(homeState.prayItems) {
+                    PrayItem(prayName = it.prayName, prayTime = it.prayTime)
                 }
-                HorizontalDivider(
-                    Modifier.padding(vertical = 16.dp),
-                    thickness = 2.dp,
-                    color = Color.Black
-                )
+            }
+            HorizontalDivider(
+                Modifier.padding(vertical = 16.dp),
+                thickness = 2.dp,
+                color = Color.Black
+            )
 
-                Button(onClick = {homeEvents.showQibla()}) {
-                    Text(stringResource(R.string.show_qibla_direction_on_map))
-                }
+            Button(onClick = { homeEvents.showQibla() }) {
+                Text(stringResource(R.string.show_qibla_direction_on_map))
+            }
         }
     }
 }
-
 
 
 @Composable
@@ -112,11 +124,8 @@ fun HomePreview() {
         override fun showQibla() {
         }
 
-        override fun nextPray() {
+        override fun getSelectedPrayersDate(count: Long) {
 
-        }
-
-        override fun previousPray() {
         }
 
         override fun updateLeftTime() {

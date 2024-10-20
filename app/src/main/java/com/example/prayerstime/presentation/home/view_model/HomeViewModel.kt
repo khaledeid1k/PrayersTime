@@ -8,6 +8,7 @@ import com.example.prayerstime.domain.model.Pray
 import com.example.prayerstime.domain.use_case.GetAllTimesPrayUseCase
 import com.example.prayerstime.domain.use_case.GetNextPray
 import com.example.prayerstime.presentation.home.ui.HomeEvents
+import com.example.prayerstime.utils.getSelectedDate
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -67,12 +68,22 @@ class HomeViewModel @Inject constructor(
 
     }
 
-    override fun nextPray() {
+    override fun getSelectedPrayersDate(count: Long) {
+        viewModelScope.launch {
+            getAllTimesPrayUseCase(30.8024, 26.8206, 4, date = getSelectedDate(count))
+                ?.apply {
+                    _homeState.update {
+                        it.copy(
+                            date = this.date,
+                            location = this.location,
+                            prayItems = this.prayItems
+                        )
 
+                    }
+                }
+        }
     }
 
-    override fun previousPray() {
 
-    }
 
 }
