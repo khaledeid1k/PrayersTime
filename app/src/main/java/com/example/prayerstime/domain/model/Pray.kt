@@ -1,6 +1,7 @@
 package com.example.prayerstime.domain.model
 
 
+
 data class Pray(
     val date: String = "N/A",
     val location: String = "Unknown Location",
@@ -10,9 +11,14 @@ data class Pray(
     var method: Int = 0,
     val remainTimeHour: Int = 0,
     val remainTimeMinute: Int = 1,
-    val nextPray: String = "None"
+    val nextPray: String = "None",
+    val error: PrayError = PrayError()
 )
 data class PrayInfo(
     val prayName : String,
     val prayTime : String,
+)
+data class PrayError(
+    val message : String="",
+    val errorState: Boolean=false,
 )

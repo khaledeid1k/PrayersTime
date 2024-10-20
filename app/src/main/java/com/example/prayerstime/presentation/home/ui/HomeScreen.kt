@@ -10,14 +10,19 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarDuration
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.SnackbarResult
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -33,6 +38,7 @@ import com.example.prayerstime.presentation.home.ui.components.HomeHeader
 import com.example.prayerstime.presentation.home.ui.components.PrayItem
 import com.example.prayerstime.presentation.home.view_model.HomeViewModel
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import kotlin.time.Duration.Companion.minutes
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -49,7 +55,9 @@ fun HomeScreen() {
 fun HomeContent(homeState: Pray, homeEvents: HomeEvents) {
     var remainTimeMinute by remember { mutableIntStateOf(homeState.remainTimeMinute) }
     var remainTimeHour by remember { mutableIntStateOf(homeState.remainTimeHour) }
-    var count by remember { mutableStateOf(0L) }
+    var count by remember { mutableLongStateOf(0L) }
+    val scope = rememberCoroutineScope()
+    val snackbarHostState = remember {  SnackbarHostState() }
     LaunchedEffect(homeState.remainTimeMinute, homeState.remainTimeHour) {
         remainTimeMinute = homeState.remainTimeMinute
         remainTimeHour = homeState.remainTimeHour
@@ -72,7 +80,11 @@ fun HomeContent(homeState: Pray, homeEvents: HomeEvents) {
         }
 
     }
-    Scaffold { padding ->
+    Scaffold (
+        snackbarHost = {
+            SnackbarHost(hostState = snackbarHostState)
+        },
+    ){ padding ->
         Column(
             Modifier
                 .padding(padding)
@@ -112,6 +124,27 @@ fun HomeContent(homeState: Pray, homeEvents: HomeEvents) {
             Button(onClick = { homeEvents.showQibla() }) {
                 Text(stringResource(R.string.show_qibla_direction_on_map))
             }
+            if (homeState.error.errorState) {
+                LaunchedEffect(snackbarHostState) {
+                    scope.launch {
+                        val result = snackbarHostState
+                            .showSnackbar(
+                                message = homeState.error.message,
+                                actionLabel = "Retry",
+                                duration = SnackbarDuration.Indefinite
+                            )
+                        when (result) {
+                            SnackbarResult.ActionPerformed -> {
+                                homeEvents.getAllPray()
+                            }
+                            SnackbarResult.Dismissed -> {
+                            }
+                        }
+                    }
+                }
+
+            }
+
         }
     }
 }
@@ -129,6 +162,10 @@ fun HomePreview() {
         }
 
         override fun updateLeftTime() {
+
+        }
+
+        override fun getAllPray() {
 
         }
     })

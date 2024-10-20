@@ -8,7 +8,7 @@ import com.example.prayerstime.utils.dateDay
 import javax.inject.Inject
 
 
-class GetAllTimesPrayUseCase @Inject constructor(
+class   GetAllTimesPrayUseCase @Inject constructor(
     private val repository: MainRepository
 ) {
     @RequiresApi(Build.VERSION_CODES.O)

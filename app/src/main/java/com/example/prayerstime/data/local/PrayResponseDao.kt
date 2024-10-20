@@ -12,6 +12,6 @@ interface PrayResponseDao {
     suspend fun insert(prayEntity: PrayEntity) : Long
     @Query("SELECT * FROM PrayResponse_table  WHERE date " +
             "==:data and latitude==:latitude and longitude==:longitude and method==:method")
-     fun getAllPrayTimes(data: String, latitude: Double, longitude: Double, method: Int
-    ):PrayEntity
+     suspend fun getAllPrayTimes(data: String, latitude: Double, longitude: Double, method: Int
+    ):PrayEntity?
 }

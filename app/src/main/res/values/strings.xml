@@ -3,4 +3,5 @@
     <string name="next_pray">Next Pray</string>
     <string name="time_left">Time Left</string>
     <string name="show_qibla_direction_on_map">Show Qibla Direction On Map</string>
+    <string name="retry">Retry</string>
 </resources>

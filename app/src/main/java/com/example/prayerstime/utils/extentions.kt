@@ -10,7 +10,12 @@ import java.util.Locale
 
 fun dateDay(): String = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(Date())
 fun getSelectedDate(count: Long): String = LocalDate.now().plusDays(count).format( DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.getDefault()))
-
+fun String.convertDate(): String {
+    val inputFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+    val outputFormat = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
+    val date = inputFormat.parse(this)
+    return outputFormat.format(date)
+}
 fun getDateComponents(dateString: String): Triple<Int, Int, Int> {
     val dateFormat = SimpleDateFormat("dd MMM yyyy", Locale.ENGLISH)
     val date = dateFormat.parse(dateString)

@@ -21,6 +21,7 @@ room-compiler = "2.6.1"
 coroutine = "1.7.3"
 datastore="1.1.1"
 hiltNavigationCompose = "1.2.0"
+composeMaterial3 = "1.0.0-alpha27"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -49,6 +50,7 @@ room-compiler = { group = "androidx.room", name = "room-compiler", version.ref =
 viewModel= { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "viewModel" }
 viewModelEx= { group = "androidx.lifecycle", name = "lifecycle-extensions", version.ref = "viewModelEx" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
+androidx-compose-material3 = { group = "androidx.wear.compose", name = "compose-material3", version.ref = "composeMaterial3" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

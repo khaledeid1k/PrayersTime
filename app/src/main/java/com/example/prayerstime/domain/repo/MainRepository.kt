@@ -13,10 +13,10 @@ interface MainRepository {
 
 
 
-    suspend fun getSelectedDay(
+    suspend fun getSavedDay(
         date: String, latitude: Double, longitude: Double, method: Int
-    ): Pray
+    ): Pray?
 
-    suspend fun savePray(prayResponseEntity: Pray) : Long
+    suspend fun savePray(pray: Pray) : Long
 
 }
