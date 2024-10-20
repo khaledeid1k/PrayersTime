@@ -13,13 +13,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.prayerstime.R
 
 @Composable
-fun HeaderBody(modifier: Modifier = Modifier, nextPray:String="ISHA", remainTimeHour:Int,remainTimeMinute:Int
+fun HeaderBody(modifier: Modifier = Modifier, nextPray:String, remainTimeHour:Int,remainTimeMinute:Int
                ) {
 
     Row (horizontalArrangement = Arrangement.SpaceBetween,

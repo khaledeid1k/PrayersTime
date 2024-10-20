@@ -9,7 +9,7 @@ data class Pray(
     val longitude: Double = 0.0,
     var method: Int = 0,
     val remainTimeHour: Int = 0,
-    val remainTimeMinute: Int = 0,
+    val remainTimeMinute: Int = 1,
     val nextPray: String = "None"
 )
 data class PrayInfo(

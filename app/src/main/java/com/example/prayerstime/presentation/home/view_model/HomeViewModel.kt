@@ -48,6 +48,19 @@ class HomeViewModel @Inject constructor(
         }
 
 
+    override  fun updateLeftTime(){
+            val nextPray = getNextPray(_homeState.value.prayItems, _homeState.value.date)
+            _homeState.update {
+                it.copy(
+                    nextPray = nextPray.first ?: "",
+                    remainTimeHour = nextPray.second,
+                    remainTimeMinute = nextPray.third,
+                )
+
+
+        }
+    }
+
 
     override fun showQibla() {
 
