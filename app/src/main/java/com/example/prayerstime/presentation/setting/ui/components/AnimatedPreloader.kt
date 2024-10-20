@@ -1,4 +1,4 @@
-package com.example.prayerstime.presentation.setting
+package com.example.prayerstime.presentation.setting.ui.components
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue

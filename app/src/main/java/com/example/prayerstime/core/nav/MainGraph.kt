@@ -10,7 +10,7 @@ import com.example.prayerstime.core.nav.args.HomeArgs.Companion.HOME_SCREEN_LATI
 import com.example.prayerstime.core.nav.args.HomeArgs.Companion.HOME_SCREEN_LONGITUDE
 import com.example.prayerstime.core.nav.args.HomeArgs.Companion.HOME_SCREEN_METHOD
 import com.example.prayerstime.presentation.home.ui.HomeScreen
-import com.example.prayerstime.presentation.setting.SettingScreen
+import com.example.prayerstime.presentation.setting.ui.SettingScreen
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 fun NavGraphBuilder.createHomeNavGraph(

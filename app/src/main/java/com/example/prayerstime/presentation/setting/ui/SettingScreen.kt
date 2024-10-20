@@ -1,4 +1,4 @@
-package com.example.prayerstime.presentation.setting
+package com.example.prayerstime.presentation.setting.ui
 
 import android.os.Build
 import android.widget.Toast
@@ -29,6 +29,10 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.prayerstime.core.theme.PrayersTimeTheme
 import com.example.prayerstime.domain.model.Setting
+import com.example.prayerstime.presentation.setting.ui.components.AnimatedPreloader
+import com.example.prayerstime.presentation.setting.ui.components.MenuSample
+import com.example.prayerstime.presentation.setting.ui.components.PermissionLocation
+import com.example.prayerstime.presentation.setting.view_model.SettingViewModel
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 @Composable
@@ -41,7 +45,7 @@ fun SettingScreen(navController: NavController) {
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 @Composable
-fun SettingContent(settingEvent: SettingEvent, settingState: Setting , navController: NavController) {
+fun SettingContent(settingEvent: SettingEvent, settingState: Setting, navController: NavController) {
     val context = LocalContext.current
     var selectedMethod by remember { mutableStateOf("") }
     var isPermeationGrantedState by remember { mutableStateOf(false) }

@@ -1,4 +1,4 @@
-package com.example.prayerstime.presentation.setting
+package com.example.prayerstime.presentation.setting.ui
 
 import androidx.navigation.NavController
 

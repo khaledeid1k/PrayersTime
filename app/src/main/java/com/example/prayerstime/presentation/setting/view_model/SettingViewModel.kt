@@ -1,9 +1,10 @@
-package com.example.prayerstime.presentation.setting
+package com.example.prayerstime.presentation.setting.view_model
 
 import androidx.navigation.NavController
 import com.example.prayerstime.core.base.BaseViewModel
 import com.example.prayerstime.core.nav.navigateToHomeScreen
 import com.example.prayerstime.domain.model.Setting
+import com.example.prayerstime.presentation.setting.ui.SettingEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
