@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.prayerstime.domain.model.Pray
 import com.example.prayerstime.domain.use_case.GetAllTimesPrayUseCase
-import com.example.prayerstime.domain.use_case.GetNextPray
+import com.example.prayerstime.domain.use_case.GetNextPrayUseCase
 import com.example.prayerstime.presentation.home.ui.HomeEvents
 import com.example.prayerstime.utils.getSelectedDate
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -21,7 +21,7 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     val getAllTimesPrayUseCase: GetAllTimesPrayUseCase,
-    val getNextPray: GetNextPray,
+    val getNextPrayUseCase: GetNextPrayUseCase,
 
     ) : ViewModel(), HomeEvents {
     private val _homeState: MutableStateFlow<Pray> = MutableStateFlow(Pray())
@@ -31,7 +31,7 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             getAllTimesPrayUseCase(30.8024, 26.8206, 4)
                 ?.apply {
-                    val nextPray = getNextPray(this.prayItems, this.date)
+                    val nextPray = getNextPrayUseCase(this.prayItems, this.date)
                     _homeState.update {
                             it.copy(
                                 date = this.date,
@@ -50,7 +50,7 @@ class HomeViewModel @Inject constructor(
 
 
     override  fun updateLeftTime(){
-            val nextPray = getNextPray(_homeState.value.prayItems, _homeState.value.date)
+            val nextPray = getNextPrayUseCase(_homeState.value.prayItems, _homeState.value.date)
             _homeState.update {
                 it.copy(
                     nextPray = nextPray.first ?: "",

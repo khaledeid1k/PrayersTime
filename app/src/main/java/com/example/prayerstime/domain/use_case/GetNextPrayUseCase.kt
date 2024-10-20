@@ -10,7 +10,7 @@ import java.time.LocalDateTime
 import java.time.ZoneOffset
 import javax.inject.Inject
 
-class GetNextPray @Inject constructor(){
+class GetNextPrayUseCase @Inject constructor(){
     @RequiresApi(Build.VERSION_CODES.O)
      operator fun invoke(prayers: List<PrayInfo>, date :String): Triple<String?, Int, Int> {
         var nearestPrayTime: Long = Long.MAX_VALUE
