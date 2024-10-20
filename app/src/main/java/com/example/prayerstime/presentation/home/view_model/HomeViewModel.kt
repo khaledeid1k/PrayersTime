@@ -2,8 +2,10 @@ package com.example.prayerstime.presentation.home.view_model
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.example.prayerstime.core.base.BaseViewModel
+import com.example.prayerstime.core.nav.args.HomeArgs
 import com.example.prayerstime.domain.model.Pray
 import com.example.prayerstime.domain.model.PrayError
 import com.example.prayerstime.domain.use_case.GetAllTimesPrayUseCase
@@ -29,19 +31,20 @@ class HomeViewModel @Inject constructor(
     val getNextPrayUseCase: GetNextPrayUseCase,
     val savePrayersDataUseCase: SavePrayersDataUseCase,
     val getSavedPrayersUseCase: GetSavedPrayersUseCase,
+    savedStateHandle: SavedStateHandle
 
 
     ) : BaseViewModel(), HomeEvents {
     private val _homeState: MutableStateFlow<Pray> = MutableStateFlow(Pray())
     val homeState: StateFlow<Pray> = _homeState.asStateFlow()
 
-
+    private val args = HomeArgs(savedStateHandle)
     init { getAllPray() }
 
     override fun getAllPray() {
         viewModelScope.launch(exceptionHandler) {
             checkError()
-            getAllTimesPrayUseCase(30.8024, 26.8206, 4)?.apply {
+            getAllTimesPrayUseCase(args.latitude, args.longitude, args.method)?.apply {
                 val nextPray = getNextPrayUseCase(this.prayItems, this.date)
                 savePrayersDataUseCase(this)
                 _homeState.update {
@@ -76,7 +79,7 @@ class HomeViewModel @Inject constructor(
 
     private fun getSavedPrayers(){
         viewModelScope.launch {
-            val prayers = getSavedPrayersUseCase(dateDay().convertDate(), 30.8024, 26.8206, 4)
+            val prayers = getSavedPrayersUseCase(dateDay().convertDate(), args.latitude, args.longitude, args.method)
             prayers?.apply {
                 val nextPray = getNextPrayUseCase(prayers.prayItems, prayers.date)
                 _homeState.update {

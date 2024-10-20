@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.hiltAndroid)
     alias(libs.plugins.ksp)
-    id("kotlin-parcelize")
+    alias(libs.plugins.jetbrains.kotlin.serialization)
 
 }
 
@@ -50,18 +50,17 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.14"
     }
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
-    buildFeatures {
-        buildConfig = true
-    }
+
 }
 
 dependencies {
@@ -80,22 +79,19 @@ dependencies {
     implementation(libs.play.services.location)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     debugImplementation(libs.androidx.ui.tooling)
-
     implementation(libs.hilt.android)
     implementation(libs.androidx.hilt.navigation.compose)
     ksp(libs.hilt.android.compiler)
-
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
-
     implementation(libs.room.ktx)
     implementation(libs.room.runtime)
     implementation(libs.datastore)
     implementation(libs.gson)
     ksp(libs.room.compiler)
-
+    implementation(libs.androidx.navigation.common.ktx)
     implementation(libs.accompanist.permissions)
-
+    implementation( libs.androidx.navigation.compose)
     implementation(libs.viewModel)
     implementation(libs.viewModelEx)
     implementation(libs.coroutine.android)
@@ -103,5 +99,7 @@ dependencies {
     implementation(libs.lottie)
     implementation(libs.coil)
     implementation(libs.lottie.compose)
+    implementation( libs.kotlinx.serialization.core.jvm)
+
 
 }

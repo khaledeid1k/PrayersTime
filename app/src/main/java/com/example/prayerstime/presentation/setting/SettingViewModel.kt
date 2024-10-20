@@ -1,6 +1,8 @@
 package com.example.prayerstime.presentation.setting
 
+import androidx.navigation.NavController
 import com.example.prayerstime.core.base.BaseViewModel
+import com.example.prayerstime.core.nav.navigateToHomeScreen
 import com.example.prayerstime.domain.model.Setting
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -33,7 +35,12 @@ class SettingViewModel @Inject constructor(): BaseViewModel(), SettingEvent {
 
     }
 
-    override fun navigateToHome() {
+    override fun navigateToHome(navController: NavController) {
+        navController.navigateToHomeScreen(
+            latitude = _settingState.value.latitude,
+            longitude = _settingState.value.longitude,
+            method = _settingState.value.method
+        )
 
     }
 }

@@ -26,21 +26,22 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.example.prayerstime.core.theme.PrayersTimeTheme
 import com.example.prayerstime.domain.model.Setting
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 @Composable
-fun SettingScreen() {
+fun SettingScreen(navController: NavController) {
     val settingViewModel = hiltViewModel<SettingViewModel>()
     val settingState by settingViewModel.settingState.collectAsState()
 
-    SettingContent(settingEvent = settingViewModel, settingState = settingState)
+    SettingContent(settingEvent = settingViewModel, settingState = settingState, navController)
 }
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 @Composable
-fun SettingContent(settingEvent: SettingEvent, settingState: Setting) {
+fun SettingContent(settingEvent: SettingEvent, settingState: Setting , navController: NavController) {
     val context = LocalContext.current
     var selectedMethod by remember { mutableStateOf("") }
     var isPermeationGrantedState by remember { mutableStateOf(false) }
@@ -83,7 +84,7 @@ fun SettingContent(settingEvent: SettingEvent, settingState: Setting) {
             Button(
                 onClick = {
                     if(selectedMethod.isNotBlank()&& isPermeationGrantedState) {
-                        settingEvent.navigateToHome()
+                        settingEvent.navigateToHome(navController)
                     }else{
                         Toast.makeText(context, "Please check you are selected Your Method and Your Location", Toast.LENGTH_SHORT).show()
                     }
@@ -108,15 +109,16 @@ fun SettingPreview(modifier: Modifier = Modifier) {
 
             }
 
-            override fun selectedMethod(value: Int) {
+            override fun selectedMethod(method: Int) {
 
             }
 
-            override fun navigateToHome() {
+            override fun navigateToHome(navController: NavController) {
 
             }
 
-        }, Setting())
+        }, Setting() ,
+            navController = NavController(LocalContext.current))
     }
 }
 

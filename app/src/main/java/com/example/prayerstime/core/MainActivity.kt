@@ -8,12 +8,13 @@ import androidx.activity.enableEdgeToEdge
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.rememberNavController
+import com.example.prayerstime.core.nav.MainScreens
+import com.example.prayerstime.core.nav.createHomeNavGraph
 import com.example.prayerstime.core.theme.PrayersTimeTheme
-import com.example.prayerstime.presentation.setting.SettingScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,25 +26,26 @@ class MainActivity : ComponentActivity() {
         setContent {
             PrayersTimeTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { _ ->
-                    SettingScreen()
+                    MainGraph()
                 }
             }
         }
     }
+
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    @Composable
+    fun MainGraph() {
+        val navController = rememberNavController()
+        NavHost(
+            navController = navController,
+            startDestination = MainScreens.Setting,
+            modifier = Modifier.fillMaxSize()
+        ) {
+            createHomeNavGraph(
+                navController = navController,
+            )
+        }
+}
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    PrayersTimeTheme {
-        Greeting("Android")
-    }
-}

@@ -1,5 +1,6 @@
 package com.example.prayerstime.core.di
 
+import com.example.prayerstime.BuildConfig
 import com.example.prayerstime.data.remote.ApiService
 import dagger.Module
 import dagger.Provides
@@ -29,7 +30,7 @@ object NetWorkModule {
     fun provideApiService(okHttpClient: OkHttpClient): ApiService {
          fun provideRetrofit(): Retrofit =
             Retrofit.Builder()
-                .baseUrl("https://api.aladhan.com/v1/")
+                .baseUrl(BuildConfig.Base_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(okHttpClient)
                 .build()

@@ -31,6 +31,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.example.prayerstime.R
 import com.example.prayerstime.domain.model.Pray
 import com.example.prayerstime.presentation.home.ui.components.HeaderBody
@@ -43,7 +44,7 @@ import kotlin.time.Duration.Companion.minutes
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navController: NavController) {
     val homeViewModel = hiltViewModel<HomeViewModel>()
     val homeState by homeViewModel.homeState.collectAsState()
 

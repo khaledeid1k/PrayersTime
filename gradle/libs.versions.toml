@@ -1,8 +1,9 @@
 [versions]
 accompanistPermissions = "0.31.0-alpha"
 agp = "8.6.1"
-kotlin = "1.9.0"
+kotlin = "1.9.24"
 coreKtx = "1.13.1"
+kotlinxSerializationCoreJvm = "1.6.3"
 lifecycleRuntimeKtx = "2.8.6"
 activityCompose = "1.9.3"
 composeBom = "2024.10.00"
@@ -10,6 +11,8 @@ ksp = "1.9.10-1.0.13"
 hilt-android = "2.49"
 coil= "2.5.0"
 lottieCompose = "6.0.1"
+navigationCompose = "2.8.3"
+navigationComposeVersion = "2.8.3"
 viewModel="2.8.6"
 viewModelEx="2.2.0"
 lottie = "6.0.1"
@@ -26,6 +29,9 @@ hiltNavigationCompose = "1.2.0"
 composeMaterial3 = "1.0.0-alpha27"
 foundationAndroid = "1.7.4"
 playServicesLocation = "21.3.0"
+kotlinxSerialization = "1.9.0"
+navigationCommonKtx = "2.8.3"
+
 
 [libraries]
 accompanist-permissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "accompanistPermissions" }
@@ -42,6 +48,7 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 datastore = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore" }
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 coroutine-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutine" }
+kotlinx-serialization-core-jvm = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core-jvm", version.ref = "kotlinxSerializationCoreJvm" }
 lottie= { group = "com.airbnb.android", name = "lottie", version.ref = "lottie" }
 coroutine-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutine" }
 coil= { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
@@ -59,6 +66,8 @@ androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-com
 androidx-compose-material3 = { group = "androidx.wear.compose", name = "compose-material3", version.ref = "composeMaterial3" }
 androidx-foundation-android = { group = "androidx.compose.foundation", name = "foundation-android", version.ref = "foundationAndroid" }
 play-services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "playServicesLocation" }
+androidx-navigation-common-ktx = { module = "androidx.navigation:navigation-common-ktx", version.ref = "navigationCommonKtx" }
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -67,4 +76,6 @@ androidLibrary = { id = "com.android.library", version.ref = "agp" }
 hiltAndroid = { id = "com.google.dagger.hilt.android", version.ref = "hilt-android" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+jetbrains-kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinxSerialization" }
+
 
