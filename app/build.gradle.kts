@@ -75,6 +75,9 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.foundation.android)
+    implementation(libs.androidx.foundation.android)
+    implementation(libs.play.services.location)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     debugImplementation(libs.androidx.ui.tooling)
 
@@ -91,6 +94,7 @@ dependencies {
     implementation(libs.gson)
     ksp(libs.room.compiler)
 
+    implementation(libs.accompanist.permissions)
 
     implementation(libs.viewModel)
     implementation(libs.viewModelEx)
@@ -98,4 +102,6 @@ dependencies {
     implementation(libs.coroutine.core)
     implementation(libs.lottie)
     implementation(libs.coil)
+    implementation(libs.lottie.compose)
+
 }
